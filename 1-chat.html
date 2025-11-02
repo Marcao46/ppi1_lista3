@@ -1,11 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chat</title>
+    <title>Chat</title>
+    <style>
+        /* ESTILIZAÇÃO GERAL */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: whitesmoke;
+        }
+
+        /* CONTAINER PRINCIPAL DO CHAT */
+        .chat-container {
+            width: 400px;
+            height: 82vh; /* Altura do chat para simular uma janela */
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            position: relative; /* Necessário para o input fixo */
+            overflow-y: auto; /* Permite rolagem das mensagens */
+            padding-bottom: 70px; /* Espaço para o campo de input fixo */
+        }
+
+        /* ESTRUTURA DA MENSAGEM */
+        .mensagem {
+            clear: both; 
+            margin: 10px 15px; /* Ajustei a margem superior/inferior para 10px */
+            padding: 5px 0;
+            overflow: hidden; /* Clearfix para o conteúdo da mensagem */
+            border-bottom: 1px solid #eee;
+        }
+
+        /* AVATAR - CORRIGIDO PARA CENTRALIZAR E AUMENTAR O EMOJI */
+        .avatar {
+            width: 30px;
+            height: 30px;
+            background-color: #4CAF50; /* Cor de fundo (visível se não houver emoji) */
+            border-radius: 50%;
+            float: right; /* Padrão: avatar à direita (para "Eu") */
+            margin-left: 10px;
+            
+            /* ESTILOS PARA O EMOJI */
+            display: flex; 
+            justify-content: center; 
+             
+            font-size: 29px; /* Tamanho do emoji ajustado para preencher o círculo */
+            line-height: 1.3;
+        }
+
+        /* CAIXA DE CONTEÚDO DA MENSAGEM */
+        .conteudo {
+            max-width: 70%;
+            padding: 10px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        /* MENSAGENS ENVIADAS (EU) - Float para a Direita */
+        .eu {
+            text-align: right;
+        }
+
+        .eu .conteudo {
+            background-color: #E3FBE3; /* Fundo verde claro */
+            float: right; 
+            margin-right: 40px; 
+        }
+
+        /* MENSAGENS RECEBIDAS (OUTRO) - Float para a Esquerda */
+        .outro {
+            text-align: left;
+        }
+        
+        /* Ajusta o avatar para o lado esquerdo na mensagem "Outro" */
+        .outro .avatar {
+            float: left; 
+            margin-right: 10px;
+            margin-left: 0;
+        }
+
+        .outro .conteudo {
+            background-color: #f0f0f0; /* Fundo cinza claro */
+            float: left; 
+            margin-left: 40px; 
+        }
+
+        /* DETALHES DA MENSAGEM */
+        .nome {
+            font-size: 0.8em;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .corpo {
+            font-size: 0.9em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .hora {
+            font-size: 0.7em;
+            color: #999;
+            margin-top: 5px;
+            position: absolute; 
+            bottom: 0px; 
+            right: 15px; 
+            z-index: 10;
+        }
+
+        .eu .hora {
+            right: 45px; 
+        }
+        
+        .outro .hora {
+            left: 45px; 
+            right: auto;
+        }
+        
+        /* CAMPO DE INPUT FIXO (FOOTER) */
+        .input-area {
+            position: absolute; 
+            bottom: 0;
+            width: 100%;
+            padding: 10px 15px;
+            border-top: 1px solid #ccc;
+            background-color: #fff;
+            box-sizing: border-box;
+            display: flex; 
+        }
+
+        .input-area input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .input-area button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    
+
+    <div class="chat-container">
+
+        <div class="mensagem outro">
+            <div class="avatar">🙋🏻‍♂️</div> <div class="nome">Pedro Silva</div>
+            <div class="conteudo">
+                <div class="corpo">Olá, tudo bem?</div>
+                <div class="hora">00:50</div>
+            </div>
+        </div>
+
+        <div class="mensagem eu">
+            <div class="avatar">👨🏻‍💼</div> <div class="nome">Eu</div>
+            <div class="conteudo">
+                <div class="corpo">Estou bem sim, e você?</div>
+                <div class="hora">00:55</div>
+            </div>
+        </div>
+        
+        <div class="mensagem outro">
+            <div class="avatar">🙋🏻‍♂️</div> <div class="nome">Pedro Silva</div>
+            <div class="conteudo">
+                <div class="corpo">
+                    Vamos sair hoje? sabe conversar e Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum ducimus
+                </div>
+                <div class="hora">01:01</div>
+            </div>
+        </div>
+
+        <div class="mensagem eu">
+            <div class="avatar">👨🏻‍💼</div> <div class="nome">Eu</div>
+            <div class="conteudo">
+                <div class="corpo">Criatura ......</div>
+                <div class="hora">00:55</div>
+            </div>
+        </div>
+
+        <div class="input-area">
+            <input type="text" placeholder="Digite sua mensagem">
+            <button>Enviar</button>
+        </div>
+
+    </div>
+
 </body>
 </html>
