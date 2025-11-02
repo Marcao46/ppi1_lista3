@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-layout-slide-show.html - Slide-Show Flexbox</title>
+    <style>
+        /* ------------------------------------------- */
+        /* ESTILOS BASE */
+        /* ------------------------------------------- */
+        body {
+            background-color: #f0f0f0;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Garante que a galeria não cause barras de rolagem desnecessárias */
+        }
+
+        /* ------------------------------------------- */
+        /* CONTAINER DA GALERIA (FLEX CONTAINER) */
+        /* ------------------------------------------- */
+        .galeria {
+            display: flex;
+            width: 80vw; /* Ocupa 80% da largura da tela */
+            height: 400px; /* Altura fixa da galeria */
+            border-radius: 20px;
+            overflow: hidden; /* Importante para manter as bordas arredondadas */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ------------------------------------------- */
+        /* ITEM INDIVIDUAL (FLEX ITEM) */
+        /* ------------------------------------------- */
+        .slide {
+            /* Imagem de fundo e texto */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            
+            /* Largura base de cada item e Transição */
+            flex-grow: 1; /* Todos crescem igualmente no estado normal */
+            flex-basis: 0; /* Largura inicial mínima */
+            transition: flex-grow 0.5s ease-in-out, filter 0.5s;
+            
+            /* Efeitos visuais */
+            filter: grayscale(80%); /* Escurece as imagens não selecionadas */
+            cursor: pointer;
+        }
+
+        /* ------------------------------------------- */
+        /* EFEITO HOVER (EXPANSÃO) */
+        /* ------------------------------------------- */
+        .slide:hover {
+            /* Quando o mouse passa por cima, esta imagem ocupa 5 vezes mais espaço */
+            flex-grow: 5; 
+            filter: grayscale(0%); /* Remove o filtro de cor para destaque */
+        }
+
+        /* ------------------------------------------- */
+        /* DETALHES INTERNOS (Texto e Ícones) */
+        /* ------------------------------------------- */
+        .info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 15px;
+            text-align: left;
+            width: 100%;
+            /* Fundo gradiente para melhorar a legibilidade do texto */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+            opacity: 0; /* Esconde as info por padrão */
+            transition: opacity 0.5s;
+        }
+
+        /* Mostra a informação apenas na imagem expandida */
+        .slide:hover .info {
+            opacity: 1;
+        }
+
+        .titulo {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .subtitulo {
+            font-size: 0.8em;
+            color: #ccc;
+        }
+
+        .icone {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: white;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2em;
+        }
+
+        /* ------------------------------------------- */
+        /* ATRIBUIÇÃO DAS IMAGENS (Para simplificar e replicar o layout) */
+        /* ------------------------------------------- */
+        /* Imagens aleatórias de Unsplash para demonstração */
+        
+        .slide:nth-child(1) {
+            background-image: url('https://picsum.photos/id/165/600/400');
+        }
+        .slide:nth-child(2) {
+            background-image: url('https://picsum.photos/id/10/600/400');
+        }
+        .slide:nth-child(3) {
+            background-image: url('https://picsum.photos/id/20/600/400');
+        }
+        .slide:nth-child(4) {
+            background-image: url('https://picsum.photos/id/30/600/400');
+        }
+        .slide:nth-child(5) {
+            background-image: url('https://picsum.photos/id/40/600/400');
+        }
+    </style>
+</head>
+<body>
+
+    <div class="galeria">
+
+        <div class="slide">
+            <div class="icone">🌱</div>
+            <div class="info">
+                <div class="titulo">Montanhas Rochosas</div>
+                <div class="subtitulo">Floresta de coníferas no inverno.</div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="icone">❄️</div>
+            <div class="info">
+                <div class="titulo">Estrada Nevada</div>
+                <div class="subtitulo">Oretamauw Omike trughte a stuffa.</div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="icone">💡</div>
+            <div class="info">
+                <div class="titulo">Caminho de Luz</div>
+                <div class="subtitulo">Aventuras na estrada deserta.</div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="icone">💧</div>
+            <div class="info">
+                <div class="titulo">Lago Sereno</div>
+                <div class="subtitulo">Reflexo das nuvens na água.</div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="icone">☀️</div>
+            <div class="info">
+                <div class="titulo">Deserto Escarpado</div>
+                <div class="subtitulo">Pôr do sol sobre a paisagem árida.</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

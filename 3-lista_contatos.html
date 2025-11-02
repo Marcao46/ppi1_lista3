@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-lista_contatos.html - Layout com Flexbox</title>
+    <style>
+        /* ESTILIZAÇÃO GERAL */
+        body {
+            background-color: #e5e5e5; /* Fundo cinza claro */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex; /* Centraliza a lista na tela */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* CONTAINER PRINCIPAL DA LISTA */
+        .lista-contatos {
+            width: 350px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        /* ------------------------------------------- */
+        /* ITEM DA LISTA (Onde o Flexbox será aplicado) */
+        /* ------------------------------------------- */
+        .contato-item {
+            display: flex; /* ATIVA O FLEXBOX */
+            align-items: center; /* Alinha verticalmente o avatar e o texto */
+            padding: 10px 15px;
+            border-bottom: 1px solid #f0f0f0; /* Separador */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        /* Efeito de hover */
+        .contato-item:hover {
+            background-color: #f8f8f8;
+        }
+
+        /* AVATAR (Círculo da Imagem) */
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden; /* Corta a imagem no formato do círculo */
+            margin-right: 15px; /* Espaço entre o avatar e o texto */
+            box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ccc; /* Borda sutil */
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Garante que a imagem preencha o círculo sem distorção */
+        }
+
+        /* TEXTO DO CONTATO */
+        .contato-info {
+            /* Permite que o bloco de informações ocupe o restante do espaço */
+            flex-grow: 1; 
+            text-align: left;
+        }
+
+        .nome {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .endereco {
+            font-size: 0.9em;
+            color: #888;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="lista-contatos">
+        
+        <div class="contato-item">
+            <div class="avatar">
+                <img src="https://via.placeholder.com/60/FF9800/FFFFFF?text=LH" alt="Avatar Linda Hart">
+            </div>
+            <div class="contato-info">
+                <div class="nome">Linda Hart</div>
+                <div class="endereco">6785 Shady Ln Dr</div>
+            </div>
+        </div>
+
+        <div class="contato-item">
+            <div class="avatar">
+                <img src="https://via.placeholder.com/60/00bcd4/FFFFFF?text=RM" alt="Avatar Roger Medina">
+            </div>
+            <div class="contato-info">
+                <div class="nome">Roger Medina</div>
+                <div class="endereco">2420 Paddock Way</div>
+            </div>
+        </div>
+
+        <div class="contato-item">
+            <div class="avatar">
+                <img src="https://via.placeholder.com/60/8BC34A/FFFFFF?text=DS" alt="Avatar Dean Sullivan">
+            </div>
+            <div class="contato-info">
+                <div class="nome">Dean Sullivan</div>
+                <div class="endereco">6727 Airplane Ave</div>
+            </div>
+        </div>
+
+        <div class="contato-item" style="border-bottom: none;">
+            <div class="avatar">
+                <img src="https://via.placeholder.com/60/F44336/FFFFFF?text=EA" alt="Avatar Elizabeth Austin">
+            </div>
+            <div class="contato-info">
+                <div class="nome">Elizabeth Austin</div>
+                <div class="endereco">6685 Blossom Hill Rd</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

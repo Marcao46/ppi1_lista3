@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6-layout-grid.html - CSS Grid Layout</title>
+    <style>
+        /* ------------------------------------------- */
+        /* ESTILOS BASE */
+        /* ------------------------------------------- */
+        body {
+            background-color: #f0f0f0;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        /* ------------------------------------------- */
+        /* GRID CONTAINER */
+        /* ------------------------------------------- */
+        .grid-container {
+            display: grid;
+            width: 800px; /* Largura total do container */
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            
+            /* DEFINIÇÃO DAS COLUNAS e LINHAS:
+               O layout parece ter 4 colunas (uma para o 2, duas para o 3, uma para o 4)
+               e 4 linhas (1, 2/3/4, 5/6, 7).
+            */
+            grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 colunas de tamanho igual (1fr) */
+            grid-template-rows: auto auto auto auto; /* Alturas automáticas baseadas no conteúdo */
+            gap: 15px; /* Espaço entre as células do Grid */
+        }
+
+        /* ------------------------------------------- */
+        /* ESTILO DOS ITENS */
+        /* ------------------------------------------- */
+        .item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        /* Cores conforme a imagem */
+        .item.amarelo {
+            background-color: #ffe6aa; /* Amarelo/Pêssego Claro */
+        }
+        .item.vermelho {
+            background-color: #ff6384; /* Rosa/Vermelho Vibrante */
+        }
+
+        /* ------------------------------------------- */
+        /* POSICIONAMENTO ESPECÍFICO DOS ITENS (GRID-AREA) */
+        /* ------------------------------------------- */
+
+        /* ITEM 1: Ocupa 4 colunas (de 1 a 5) */
+        #item1 {
+            grid-column: 1 / 5; 
+        }
+
+        /* ITEM 2: Ocupa 1 coluna (de 1 a 2) e começa na Linha 2 */
+        #item2 {
+            grid-column: 1 / 2;
+            grid-row: 2 / 4; /* Ocupa 2 linhas (Linhas 2 e 3) */
+        }
+
+        /* ITEM 3: Ocupa 2 colunas (de 2 a 4) e começa na Linha 2 */
+        #item3 {
+            grid-column: 2 / 4;
+            grid-row: 5 / 4; /* Ocupa 2 linhas (Linhas 2 e 3) */
+        }
+
+        /* ITEM 4: Ocupa 1 coluna (de 4 a 5) e começa na Linha 2 */
+        #item4 {
+            grid-column: 4 / 5;
+        }
+        
+        /* ITEM 5: Ocupa 1 coluna (de 1 a 2) e começa na Linha 4 (abaixo do item 2) */
+        #item5 {
+            grid-column: 1 / 2;
+            grid-row: 4 / 5;
+        }
+        
+        /* ITEM 6: Ocupa 1 coluna (de 4 a 5) e começa na Linha 3 */
+        #item6 {
+            grid-column: 4 / 5;
+            grid-row: 3 / 5; /* Ocupa 2 linhas (Linhas 3 e 4) */
+        }
+
+        /* ITEM 7: Ocupa 3 colunas (de 2 a 5) e começa na Linha 5 */
+        #item7 {
+            grid-column: 2 / 5; 
+        }
+
+        /* Nota: Se definirmos 4 linhas, o item 7 precisa estar na linha 5 implícita. 
+           Vamos redesenhar a estrutura da imagem para 3 colunas e 5 linhas para simplificar a sobreposição.
+           
+           REFAZENDO A ESTRUTURA PARA SER MAIS FIEL À IMAGEM:
+           Grid de 4x5 colunas/linhas para simplificar o posicionamento
+        */
+        
+        .grid-container {
+            display: grid;
+            width: 800px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            
+            /* Novo template: 4 Colunas x 5 Linhas */
+            grid-template-columns: repeat(4, 1fr); 
+            grid-template-rows: repeat(5, auto); 
+            gap: 15px; 
+        }
+
+        /* POSICIONAMENTO REVISADO */
+
+        /* ITEM 1: Ocupa 4 Colunas, Linha 1 */
+        #item1 {
+            grid-column: 1 / span 4;
+            grid-row: 1;
+        }
+
+        /* ITEM 2: Ocupa 1 Coluna, 2 Linhas, começando na Linha 2 */
+        #item2 {
+            grid-column: 1 / span 1;
+            grid-row: 2 / span 2; 
+        }
+
+        /* ITEM 3: Ocupa 2 Colunas, 2 Linhas, começando na Coluna 2, Linha 2 */
+        #item3 {
+            grid-column: 2 / span 2;
+            grid-row: 2 / span 2; 
+        }
+
+        /* ITEM 4: Ocupa 1 Coluna, 1 Linha, Coluna 4, Linha 2 */
+        #item4 {
+            grid-column: 4 / span 1;
+            grid-row: 2;
+        }
+        
+        /* ITEM 5: Ocupa 1 Coluna, 1 Linha, Coluna 1, Linha 4 */
+        #item5 {
+            grid-column: 1 / span 1;
+            grid-row: 4;
+        }
+
+        /* ITEM 6: Ocupa 1 Coluna, 2 Linhas, Coluna 4, Linha 3 */
+        #item6 {
+            grid-column: 4 / span 1;
+            grid-row: 3 / span 2; 
+        }
+
+        /* ITEM 7: Ocupa 3 Colunas, 1 Linha, Coluna 2, Linha 5 */
+        #item7 {
+            grid-column: 2 / span 3;
+            grid-row: 5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-container">
+        <div class="item amarelo" id="item1">1</div>
+        <div class="item vermelho" id="item2">2</div>
+        <div class="item amarelo" id="item3">3</div>
+        <div class="item vermelho" id="item4">4</div>
+        <div class="item amarelo" id="item5">5</div>
+        <div class="item vermelho" id="item6">6</div>
+        <div class="item amarelo" id="item7">7</div>
+    </div>
+
+</body>
+</html>

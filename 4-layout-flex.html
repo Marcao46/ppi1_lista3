@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Flexbox 100vh</title>
+    <style>
+        /* ------------------------------------------- */
+        /* ESTILOS BASE */
+        /* ------------------------------------------- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            /* O corpo define a altura total da viewport (100% da altura da tela) */
+            min-height: 100vh; 
+            display: flex;
+            flex-direction: column; /* Organiza o topo e a área principal verticalmente */
+        }
+
+        /* ------------------------------------------- */
+        /* ÁREA SUPERIOR (Dark Gray) */
+        /* ------------------------------------------- */
+        .topo {
+            background-color: #2b2b2b;
+            height: 100px; /* Altura fixa para o topo */
+            width: 100vw; /* Ocupa 100% da largura da tela */
+            display: flex;
+            align-items: center; /* Centraliza os círculos verticalmente */
+            padding-left: 20px;
+        }
+
+        /* Elementos internos do topo (os três círculos) */
+        .circulo {
+            width: 30px;
+            height: 30px;
+            background-color: #00bcd4; /* Azul ciano */
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        /* ------------------------------------------- */
+        /* ÁREA PRINCIPAL (Abaixo do Topo) */
+        /* ------------------------------------------- */
+        .area-principal {
+            /* Ocupa o restante da altura da viewport */
+            flex-grow: 1; 
+            width: 100vw;
+            display: flex; /* ATIVA O FLEXBOX para dividir Navegação e Área de Conteúdo */
+        }
+
+        /* ------------------------------------------- */
+        /* NAVEGAÇÃO (Laranja) */
+        /* ------------------------------------------- */
+        .navegacao {
+            background-color: #ff8c42; /* Laranja */
+            width: 200px; /* Largura fixa para a navegação */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        /* ------------------------------------------- */
+        /* CONTEÚDO LATERAL (Direito) */
+        /* ------------------------------------------- */
+        .conteudo-lateral {
+            /* Ocupa toda a largura restante (100% - 200px da Navegação) */
+            flex-grow: 1; 
+            display: flex;
+            flex-direction: column; /* Organiza Cabeçalho, Conteúdo e Rodapé verticalmente */
+        }
+
+        /* ------------------------------------------- */
+        /* CABEÇALHO (Azul Claro - Topo do conteúdo lateral) */
+        /* ------------------------------------------- */
+        .cabecalho {
+            background-color: #00bcd4; /* Azul ciano */
+            height: 80px; /* Altura fixa */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        /* ------------------------------------------- */
+        /* CONTEÚDO (Roxo) */
+        /* ------------------------------------------- */
+        .conteudo {
+            background-color: #673ab7; /* Roxo */
+            /* Ocupa toda a altura restante entre o Cabeçalho e o Rodapé */
+            flex-grow: 1; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        /* ------------------------------------------- */
+        /* RODAPÉ (Azul Escuro) */
+        /* ------------------------------------------- */
+        .rodape {
+            background-color: #00796b; /* Azul esverdeado */
+            height: 50px; /* Altura fixa */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="topo">
+        <div class="circulo"></div>
+        <div class="circulo"></div>
+        <div class="circulo"></div>
+    </div>
+
+    <div class="area-principal">
+        <div class="navegacao">
+            NAVEGAÇÃO
+        </div>
+        
+        <div class="conteudo-lateral">
+            <div class="cabecalho">
+                CABEÇALHO
+            </div>
+            <div class="conteudo">
+                CONTEÚDO
+            </div>
+            <div class="rodape">
+                RODAPÉ
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-layout-adaptative.html - Layout Adaptativo</title>
+    <style>
+        /* ------------------------------------------- */
+        /* ESTILOS GERAIS */
+        /* ------------------------------------------- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            min-height: 100vh;
+            display: flex; /* Flexbox principal no body */
+            flex-direction: column;
+        }
+
+        /* Classes de cores e texto */
+        .header { background-color: #ffcc00; } /* Amarelo */
+        .banner { background-color: #ff6347; } /* Vermelho */
+        .left-aside, .low-content { background-color: #3cb371; } /* Verde */
+        .right-aside { background-color: #ffcc00; } /* Amarelo */
+        .main-content { background-color: #4169e1; } /* Azul */
+        .footer { background-color: #4169e1; } /* Azul */
+        
+        .box {
+            padding: 20px 0;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ------------------------------------------- */
+        /* LAYOUT PADRÃO (DESKTOP) - WIDE SCREEN */
+        /* ------------------------------------------- */
+
+        /* 1. Estrutura Vertical Principal */
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            flex-grow: 1; /* Ocupa a altura restante da tela */
+        }
+        
+        /* Define a altura das caixas fixas */
+        .header, .banner, .footer {
+            height: 60px;
+        }
+
+        /* 2. Área Central (Header/Banner e Content/Asides) */
+        .top-area {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 3. Área de Conteúdo (Left Aside | Content | Right Aside) */
+        .content-area {
+            display: flex;
+            flex-grow: 1; /* Ocupa a altura restante do Content-Area */
+        }
+
+        /* Definição de Larguras e Altura */
+        .left-aside, .right-aside {
+            width: 150px; /* Largura fixa para as laterais */
+        }
+
+        .main-content {
+            flex-grow: 1; /* Ocupa toda a largura restante */
+            /* A altura está implícita pela área flexível de content-area */
+        }
+
+        .low-content {
+            height: 50px; /* Altura da faixa Low Content */
+        }
+        
+        /* 4. Bloco Central Total */
+        .main-block {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+
+        /* ------------------------------------------- */
+        /* LAYOUT ADAPTATIVO (MOBILE) */
+        /* ------------------------------------------- */
+
+        @media screen and (max-width: 600px) {
+            /* 1. Reinicia a estrutura principal para o modo coluna */
+            .content-area {
+                flex-direction: column; /* Laterais ficam em cima/baixo do Main Content */
+            }
+            
+            /* 2. Reordena e Redimensiona */
+            .header, .banner, .left-aside, .right-aside, .low-content, .footer, .main-content {
+                width: 100%;
+                height: 80px; /* Altura padrão maior para itens móveis */
+                order: initial; /* Reseta a ordem */
+            }
+
+            /* Força o Main Content a ocupar a maior parte do espaço */
+            .main-content {
+                height: 400px; /* Altura fixa ou maior */
+                order: 3; /* Coloca o Main Content no meio da pilha */
+            }
+
+            /* Reordenação Móvel: */
+            .header { order: 1; }
+            .banner { order: 2; }
+            .left-aside { order: 4; }
+            .right-aside { order: 5; }
+            .low-content { order: 6; }
+            .footer { order: 7; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="top-area">
+            <div class="header box">Header</div>
+            <div class="banner box">Banner</div>
+        </div>
+
+        <div class="content-area">
+            <div class="left-aside box">Left Aside</div>
+            
+            <div class="main-block">
+                <div class="main-content box">Main Content</div>
+                <div class="low-content box">Low Content</div>
+            </div>
+            
+            <div class="right-aside box">Right Aside</div>
+        </div>
+        
+        <div class="footer box">Footer</div>
+
+    </div>
+
+</body>
+</html>

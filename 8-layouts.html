@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8-layout-grid-adaptive.html - Grid Responsivo</title>
+    <style>
+        /* ------------------------------------------- */
+        /* ESTILOS BASE */
+        /* ------------------------------------------- */
+        body {
+            background-color: #f0f0f0;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container Principal do Grid */
+        .grid-container {
+            display: grid;
+            width: 80vw; /* 80% da largura da viewport */
+            height: 500px; /* Altura fixa para demonstração */
+            margin: 50px;
+            gap: 10px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo dos Itens */
+        .item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 5px;
+            opacity: 0.85;
+        }
+
+        /* Paleta de Cores (Adaptada do primeiro layout) */
+        .item:nth-child(1) { background-color: #f08080; } /* Light Coral */
+        .item:nth-child(2) { background-color: #ffcc00; } /* Amarelo */
+        .item:nth-child(3) { background-color: #add8e6; } /* Azul Claro */
+        .item:nth-child(4) { background-color: #90ee90; } /* Verde Claro */
+        .item:nth-child(5) { background-color: #ffa07a; } /* Light Salmon */
+        .item:nth-child(6) { background-color: #87ceeb; } /* Sky Blue */
+        .item:nth-child(7) { background-color: #e0ffff; } /* Azure */
+        .item:nth-child(8) { background-color: #3cb371; } /* Medium Sea Green */
+        .item:nth-child(9) { background-color: #ff6347; } /* Tomato */
+
+
+        /* ------------------------------------------- */
+        /* LAYOUT DESKTOP (Grid 5x5 Implícito) */
+        /* ------------------------------------------- */
+        
+        .grid-container {
+            /* 4 colunas e 4 linhas para facilitar o alinhamento visual */
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+        }
+
+        /* ITEM 1 (Canto Superior Esquerdo - 1 coluna x 2 linhas) */
+        .item:nth-child(1) {
+            grid-column: 1;
+            grid-row: 1 / span 2;
+        }
+
+        /* ITEM 2 (Centro Superior - 2 colunas x 2 linhas) */
+        .item:nth-child(2) {
+            grid-column: 2 / span 2;
+            grid-row: 1 / span 2;
+        }
+        
+        /* ITEM 3 (Canto Superior Direito - 1 coluna x 1 linha) */
+        .item:nth-child(3) {
+            grid-column: 4;
+            grid-row: 1;
+        }
+
+        /* ITEM 4 (Lado Direito, abaixo do 3 - 1 coluna x 2 linhas) */
+        .item:nth-child(4) {
+            grid-column: 4;
+            grid-row: 2 / span 2;
+        }
+
+        /* ITEM 5 (Abaixo do 1 - 1 coluna x 1 linha) */
+        .item:nth-child(5) {
+            grid-column: 1;
+            grid-row: 3;
+        }
+        
+        /* ITEM 6 (Centro Inferior - 2 colunas x 1 linha) */
+        .item:nth-child(6) {
+            grid-column: 2 / span 2;
+            grid-row: 3;
+        }
+        
+        /* ITEM 7 (Canto Inferior Esquerdo - 1 coluna x 1 linha) */
+        .item:nth-child(7) {
+            grid-column: 1;
+            grid-row: 4;
+        }
+        
+        /* ITEM 8 (Centro Inferior - 3 colunas x 1 linha) */
+        .item:nth-child(8) {
+            grid-column: 2 / span 3;
+            grid-row: 4;
+        }
+
+        /* ------------------------------------------- */
+        /* MEDIA QUERY: LAYOUT RESPONSIVO (< 500px) */
+        /* ------------------------------------------- */
+        @media screen and (max-width: 500px) {
+            .grid-container {
+                width: 95vw;
+                height: auto; /* Altura adapta-se ao conteúdo */
+                
+                /* Layout 1 Coluna */
+                grid-template-columns: 1fr; 
+                grid-template-rows: repeat(8, auto); /* 8 Linhas, uma para cada item */
+                gap: 5px; /* Reduz o espaço no celular */
+            }
+
+            .item {
+                /* Garante que todos os itens ocupem 100% da largura */
+                grid-column: 1 / -1 !important; 
+                grid-row: auto !important;
+                height: 70px; /* Altura fixa para itens móveis */
+            }
+            
+            /* Você pode usar 'order' se quiser reorganizar, mas aqui a ordem do HTML é mantida.
+            
+            .item:nth-child(1) { order: 1; }
+            .item:nth-child(5) { order: 2; }
+            .item:nth-child(2) { order: 3; }
+            
+            */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+    </div>
+
+</body>
+</html>

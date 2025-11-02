@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bandeiras com CSS</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: whitesmoke;
+  }
+
+  /* Links do topo */
+  nav {
+    margin: 20px;
+  }
+  nav a {
+    text-decoration: none;
+    background: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin: 5px;
+    display: inline-block;
+    transition: 1.5s;
+  }
+  nav a:hover {
+    background: #13cbb2;
+  }
+
+  /* Classe geral das bandeiras */
+  .bandeira {
+    width: 300px;
+    height: 200px;
+    margin: 30px auto;
+    border: 1px solid #000;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    position: relative;
+    transition: all 0.9s ease; /* transição suave */
+  }
+
+  /* Efeito de destaque quando o link é clicado */
+  .bandeira:target {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(0, 128, 255, 0.6);
+    z-index: 10;
+  }
+
+  /* ===================== JAPÃO ===================== */
+  #japao.bandeira { background-color: white; }
+  #japao.bandeira > div.circulo {
+    background-color: red;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* ===================== ALEMANHA ===================== */
+  #alemanha.bandeira {
+    display: flex;
+    flex-direction: column;
+  }
+  #alemanha.bandeira div { flex: 1; }
+  #alemanha.bandeira .preto { background-color: black; }
+  #alemanha.bandeira .vermelho { background-color: red; }
+  #alemanha.bandeira .amarelo { background-color: gold; }
+
+  /* ===================== HOLANDA ===================== */
+  #holanda.bandeira {
+    display: flex;
+    flex-direction: column;
+  }
+  #holanda.bandeira .vermelho { background-color: red; flex: 1; }
+  #holanda.bandeira .branco { background-color: white; flex: 1; }
+  #holanda.bandeira .azul { background-color: blue; flex: 1; }
+
+  /* ===================== ITÁLIA ===================== */
+  #italia.bandeira {
+    display: flex;
+  }
+  #italia.bandeira .verde { background-color: green; flex: 1; }
+  #italia.bandeira .branco { background-color: white; flex: 1; }
+  #italia.bandeira .vermelho { background-color: red; flex: 1; }
+
+  /* ===================== BRASIL ===================== */
+  #brasil.bandeira {
+    background-color: green;
+    overflow: hidden;
+  }
+  #brasil.bandeira .losango {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160px;
+    height: 160px;
+    background: yellow;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  #brasil.bandeira .circulo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90px;
+    height: 90px;
+    background: blue;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+</style>
+</head>
+<body>
+
+  <h1>Bandeiras com CSS</h1>
+  <nav>
+    <a href="#japao">Bandeira Japão</a>
+    <a href="#alemanha">Bandeira Alemanha</a>
+    <a href="#holanda">Bandeira Holanda</a>
+    <a href="#italia">Bandeira Itália</a>
+    <a href="#brasil">Bandeira Brasil</a>
+  </nav>
+
+  <div id="japao" class="bandeira">
+    <div class="circulo"></div>
+  </div>
+
+  <div id="alemanha" class="bandeira">
+    <div class="preto"></div>
+    <div class="vermelho"></div>
+    <div class="amarelo"></div>
+  </div>
+
+  <div id="holanda" class="bandeira">
+    <div class="vermelho"></div>
+    <div class="branco"></div>
+    <div class="azul"></div>
+  </div>
+
+  <div id="italia" class="bandeira">
+    <div class="verde"></div>
+    <div class="branco"></div>
+    <div class="vermelho"></div>
+  </div>
+
+  <div id="brasil" class="bandeira">
+    <div class="losango"></div>
+    <div class="circulo"></div>
+  </div>
+
+</body>
+</html>
